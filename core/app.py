@@ -12,6 +12,7 @@ class App:
         self.window.title("Tetris color")
         self.canvas = tk.Canvas(self.window, width=W, height=H)
         self.canvas.pack()
+        self.time = time
         self.board = Board(self.canvas)  # это создание экземпляра класса
         self.forecast = Figure(self.canvas, self.board)
         self.forecast.name = "forecast"
@@ -65,7 +66,7 @@ class App:
             self.figure.shift(-1)
 
         if event.keysym == "Down":
-            self.board.fast_down = True
+            self.board.fast_down = not self.board.fast_down
 
         if event.keysym == "Up":
             self.figure.rotate()
